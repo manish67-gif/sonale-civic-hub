@@ -142,3 +142,52 @@
     color: var(--color-foreground);
   }
 }
+
+/* Sonale civic identity */
+@theme inline {
+  --color-green: var(--green);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-accent: var(--footer-accent);
+  --color-footer-surface: var(--footer-surface);
+  --color-footer-line: var(--footer-line);
+  --color-primary-soft: var(--primary-soft);
+}
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.98 0.004 245);
+  --foreground: oklch(0.29 0.025 248);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.29 0.025 248);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.29 0.025 248);
+  --primary: oklch(0.45 0.11 245);
+  --primary-foreground: oklch(1 0 0);
+  --primary-soft: oklch(0.85 0.045 235);
+  --secondary: oklch(0.95 0.025 155);
+  --secondary-foreground: oklch(0.35 0.07 157);
+  --muted: oklch(0.96 0.006 245);
+  --muted-foreground: oklch(0.51 0.018 250);
+  --accent: oklch(0.94 0.025 245);
+  --accent-foreground: oklch(0.4 0.1 245);
+  --border: oklch(0.91 0.009 245);
+  --input: oklch(0.88 0.012 245);
+  --ring: oklch(0.45 0.11 245);
+  --green: oklch(0.47 0.09 155);
+  --footer: oklch(0.25 0.05 245);
+  --footer-foreground: oklch(0.99 0 0);
+  --footer-muted: oklch(0.79 0.018 245);
+  --footer-accent: oklch(0.75 0.07 155);
+  --footer-surface: oklch(0.31 0.05 245);
+  --footer-line: oklch(0.37 0.045 245);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif; }
+.site-container { width: min(100% - 2rem, 1240px); margin-inline: auto; }
+.tricolor { height: 3px; background: linear-gradient(90deg, oklch(0.7 0.15 60) 0 33.33%, oklch(1 0 0) 33.33% 66.66%, oklch(0.52 0.11 155) 66.66%); }
+.footer-heading { color: var(--footer-foreground); font-weight: 700; padding-bottom: .75rem; margin-bottom: 1rem; border-bottom: 1px solid var(--footer-line); }
+.form-label { display: block; margin-bottom: .45rem; font-size: .875rem; font-weight: 600; color: var(--foreground); }
+.form-control { width: 100%; min-height: 43px; border: 1px solid var(--input); background: var(--card); border-radius: .375rem; padding: .65rem .8rem; font-size: .875rem; outline: none; }
+.form-control:focus-visible { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 20%, transparent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
