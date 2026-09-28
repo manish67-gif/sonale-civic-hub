@@ -5,7 +5,7 @@ import { SectionTitle, AnnouncementCard, PrimaryLink, routeHead } from '@/compon
 import { announcements, portals, tagline } from '@/lib/site-data';
 import office from '@/assets/panchayat-office.jpg';
 
-export const Route = createFileRoute('/')({ head: () => routeHead('Gram Panchayat Sonale | ग्राम पंचायत सोनाळे', 'Official website of Group Gram Panchayat Sonale, Bhiwandi, Thane, Maharashtra.'), component: Home });
+export const Route = createFileRoute('/')({ head: () => routeHead('ग्राम पंचायत सोनाळे', 'Official website of Group Gram Panchayat Sonale, Bhiwandi, Thane, Maharashtra.'), component: Home });
 const quick = [
   { title: 'About Gram Panchayat', mr: 'ग्रामपंचायतीबद्दल', copy: 'Learn about our village and local governance.', to: '/about', icon: Building2 },
   { title: 'Announcements', mr: 'सूचना', copy: 'Stay informed with the latest public notices.', to: '/announcements', icon: Bell },
