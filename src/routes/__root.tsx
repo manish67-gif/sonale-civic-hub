@@ -78,14 +78,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Gram Panchayat Sonale | ग्राम पंचायत सोनाळे | Bhiwandi" },
-      { name: "description", content: "Official website of Group Gram Panchayat Sonale, Bhiwandi, Thane, Maharashtra." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Gram Panchayat Sonale | ग्राम पंचायत सोनाळे" },
-      { property: "og:description", content: "Official website of Group Gram Panchayat Sonale, Bhiwandi, Thane, Maharashtra." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
