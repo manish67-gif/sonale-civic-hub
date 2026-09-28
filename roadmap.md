@@ -1,3 +1,3 @@
-- [ ] Build shared bilingual navigation, footer, page patterns, data and imagery.
-- [ ] Build homepage and About, Gallery, Announcements, Contact, Feedback, Admin Login pages.
+- [x] Build shared bilingual navigation, footer, page patterns, data and imagery.
+- [x] Build homepage and About, Gallery, Announcements, Contact, Feedback, Admin Login pages.
 - [ ] Verify routes, interactions, forms, accessibility and responsive layouts.
