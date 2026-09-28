@@ -1,24 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { Building2, Bell, Images, Phone, MessageSquare, ArrowRight, ExternalLink, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { SectionTitle, AnnouncementCard, PrimaryLink, routeHead } from '@/components/site';
+import { announcements, portals, tagline } from '@/lib/site-data';
+import office from '@/assets/panchayat-office.jpg';
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+export const Route = createFileRoute('/')({ head: () => routeHead('Gram Panchayat Sonale | ग्राम पंचायत सोनाळे', 'Official website of Group Gram Panchayat Sonale, Bhiwandi, Thane, Maharashtra.'), component: Home });
+const quick = [
+  { title: 'About Gram Panchayat', mr: 'ग्रामपंचायतीबद्दल', copy: 'Learn about our village and local governance.', to: '/about', icon: Building2 },
+  { title: 'Announcements', mr: 'सूचना', copy: 'Stay informed with the latest public notices.', to: '/announcements', icon: Bell },
+  { title: 'Photo Gallery', mr: 'छायाचित्र दालन', copy: 'Explore village life, projects and events.', to: '/gallery', icon: Images },
+  { title: 'Contact Us', mr: 'संपर्क', copy: 'Reach the Gram Panchayat office.', to: '/contact', icon: Phone },
+  { title: 'Submit Feedback', mr: 'अभिप्राय', copy: 'Share a suggestion, question or concern.', to: '/feedback', icon: MessageSquare },
+] as const;
+function Home() { return <>
+  <section className="relative isolate flex min-h-[440px] items-center overflow-hidden bg-primary text-primary-foreground sm:min-h-[470px]"><img src={office} width={1408} height={912} alt="Illustrative village Gram Panchayat office" className="absolute inset-0 -z-20 size-full object-cover object-center" /><div className="absolute inset-0 -z-10 bg-footer/75" /><div className="site-container py-16"><div className="max-w-2xl"><span className="mb-5 inline-flex items-center gap-2 border-l-[3px] border-footer-accent pl-3 text-xs font-bold uppercase text-footer-accent"><Building2 className="size-4" /> Local self-government · Bhiwandi, Thane</span><h1 className="text-4xl font-bold leading-tight sm:text-5xl">Gram Panchayat Sonale</h1><p className="mt-3 text-2xl font-semibold text-primary-soft sm:text-3xl">ग्राम पंचायत सोनाळे</p><p className="mt-7 max-w-xl text-base leading-8 text-primary-foreground/90">{tagline}</p><div className="mt-8 flex flex-wrap gap-3"><Button asChild size="lg" className="bg-card text-primary hover:bg-card/90"><Link to="/about">About Gram Panchayat <ArrowRight /></Link></Button><Button asChild size="lg" variant="outline" className="border-primary-foreground bg-transparent text-primary-foreground hover:bg-card hover:text-primary"><Link to="/contact">Contact Us</Link></Button></div></div></div></section>
+  <section className="site-container py-14"><SectionTitle title="Quick Access" marathi="त्वरित दुवे" /><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{quick.map(q => <Link key={q.to} to={q.to} className="group rounded-md border border-border bg-card p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"><span className="mb-5 grid size-11 place-items-center rounded bg-secondary text-green"><q.icon className="size-5" /></span><h3 className="font-bold text-foreground group-hover:text-primary">{q.title}</h3><p className="mt-1 text-xs font-medium text-green">{q.mr}</p><p className="mt-3 text-xs leading-5 text-muted-foreground">{q.copy}</p><ArrowRight className="mt-5 size-4 text-primary" /></Link>)}</div></section>
+  <section className="border-y border-border bg-card"><div className="site-container py-14"><div className="flex flex-wrap items-end justify-between gap-4"><SectionTitle title="Latest Announcements" marathi="सूचना व जाहिराती" /><Link to="/announcements" className="mb-7 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">View All Announcements <ArrowRight className="size-4" /></Link></div><div className="grid gap-5 md:grid-cols-3">{announcements.slice(0,3).map(item => <AnnouncementCard key={item.id} item={item} />)}</div></div></section>
+  <section className="site-container grid items-center gap-10 py-16 md:grid-cols-2"><img src={office} loading="lazy" width={1408} height={912} alt="Illustrative Gram Panchayat office building in Maharashtra" className="aspect-[4/3] w-full rounded-md object-cover" /><div><SectionTitle title="About Gram Panchayat" marathi="ग्रामपंचायतीबद्दल" /><p className="text-sm leading-8 text-muted-foreground">Group Gram Panchayat Sonale serves the community of Sonale in Bhiwandi, Thane, Maharashtra. We work with citizens to strengthen local services, improve public infrastructure, and support a cleaner, more connected village.</p><p className="mt-4 text-sm leading-8 text-muted-foreground">पारदर्शक कारभार, नागरिकांचा सहभाग आणि सर्वांगीण विकास हे आमच्या कार्याचे केंद्रस्थान आहे.</p><div className="mt-7"><PrimaryLink to="/about">Read More</PrimaryLink></div></div></section>
+  <section className="border-y border-border bg-card"><div className="site-container py-14"><SectionTitle title="Government Portals" marathi="शासकीय संकेतस्थळे" /><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">{portals.map(p => <a href={p.url} key={p.url} target="_blank" rel="noopener noreferrer" className="flex min-h-24 items-center justify-between gap-3 rounded-md border border-border px-4 py-5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"><span>{p.name}</span><ExternalLink className="size-4 shrink-0 text-green" /></a>)}</div></div></section>
+  <section className="bg-secondary"><div className="site-container flex flex-col gap-5 py-12 md:flex-row md:items-center md:justify-between"><div><p className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase text-green"><MapPin className="size-4" /> We are here to help</p><h2 className="text-2xl font-bold text-primary">Have a question or suggestion?</h2><p className="mt-1 text-sm text-muted-foreground">प्रश्न किंवा सूचना असल्यास आम्हाला कळवा.</p></div><div className="flex flex-wrap gap-3"><PrimaryLink to="/contact">Contact Us</PrimaryLink><PrimaryLink to="/feedback" outline>Submit Feedback</PrimaryLink></div></div></section>
+</>; }
