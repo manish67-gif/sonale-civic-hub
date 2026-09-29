@@ -1,3 +1,5 @@
-- [x] Build shared bilingual navigation, footer, page patterns, data and imagery.
-- [x] Build homepage and About, Gallery, Announcements, Contact, Feedback, Admin Login pages.
-- [x] Verify routes, interactions, forms, accessibility and responsive layouts.
+- [ ] Transform the existing bilingual civic site from Sonale to Ovali without redesigning it.
+- [ ] Replace fictional/contact-specific content, sample notices, and non-Ovali imagery; use verified reference facts and clear placeholders.
+- [ ] Add Ovali village overview, Census 2011 statistics, Panchayat structure, facilities, connectivity, and nearby villages.
+- [ ] Update all route metadata and shared branding; preserve the current gallery, forms, and admin-login demo.
+- [ ] Search for leftover Sonale references and verify routes, interactions, responsive layout, and preview diagnostics.
