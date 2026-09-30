@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AnnouncementsRouteImport } from './routes/announcements'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const IndexRoute = IndexRouteImport.update({
@@ -37,6 +39,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeedbackRoute = FeedbackRouteImport.update({
   id: '/feedback',
   path: '/feedback',
@@ -45,6 +52,11 @@ const FeedbackRoute = FeedbackRouteImport.update({
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
@@ -58,8 +70,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/announcements': typeof AnnouncementsRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/feedback': typeof FeedbackRoute
   '/gallery': typeof GalleryRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRoutesByTo {
@@ -67,8 +81,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/announcements': typeof AnnouncementsRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/feedback': typeof FeedbackRoute
   '/gallery': typeof GalleryRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRoutesById {
@@ -77,8 +93,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/announcements': typeof AnnouncementsRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/feedback': typeof FeedbackRoute
   '/gallery': typeof GalleryRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRouteTypes {
@@ -88,8 +106,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/announcements'
     | '/contact'
+    | '/documents'
     | '/feedback'
     | '/gallery'
+    | '/admin/dashboard'
     | '/admin/login'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -97,8 +117,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/announcements'
     | '/contact'
+    | '/documents'
     | '/feedback'
     | '/gallery'
+    | '/admin/dashboard'
     | '/admin/login'
   id:
     | '__root__'
@@ -106,8 +128,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/announcements'
     | '/contact'
+    | '/documents'
     | '/feedback'
     | '/gallery'
+    | '/admin/dashboard'
     | '/admin/login'
   fileRoutesById: FileRoutesById
 }
@@ -116,8 +140,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AnnouncementsRoute: typeof AnnouncementsRoute
   ContactRoute: typeof ContactRoute
+  DocumentsRoute: typeof DocumentsRoute
   FeedbackRoute: typeof FeedbackRoute
   GalleryRoute: typeof GalleryRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
 }
 
@@ -151,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/feedback': {
       id: '/feedback'
       path: '/feedback'
@@ -163,6 +196,13 @@ declare module '@tanstack/react-router' {
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/login': {
@@ -180,8 +220,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AnnouncementsRoute: AnnouncementsRoute,
   ContactRoute: ContactRoute,
+  DocumentsRoute: DocumentsRoute,
   FeedbackRoute: FeedbackRoute,
   GalleryRoute: GalleryRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport

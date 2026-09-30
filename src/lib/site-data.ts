@@ -1,18 +1,32 @@
-export const tagline = 'Ovali Gram Panchayat serves the village of Ovali in Bhiwandi, Thane, Maharashtra. This site shares village information, public resources and updates as they become available.';
-export const marathiTagline = 'ग्रामपंचायत ओवळीच्या डिजिटल व्यासपीठावर आपले स्वागत आहे. येथे गाव, ग्रामपंचायत सेवा, सूचना आणि नागरिकांसाठी उपयुक्त माहिती उपलब्ध करून देण्यात येते.';
+export const tagline = 'Gram Panchayat Ovali serves the village of Ovali in Bhiwandi, Thane, Maharashtra. This site shares village information, public resources and updates as they become available.';
+export const marathiTagline = 'ग्राम पंचायत ओवळीच्या डिजिटल व्यासपीठावर आपले स्वागत आहे. येथे गाव, ग्रामपंचायत सेवा, सूचना आणि नागरिकांसाठी उपयुक्त माहिती उपलब्ध करून देण्यात येते.';
+
+export const TO_BE_UPDATED_EN = 'To be updated';
+export const TO_BE_UPDATED_MR = 'माहिती लवकरच अद्ययावत केली जाईल';
 
 export const contact = {
-  phone: 'To be updated',
-  email: 'To be updated',
+  phone: TO_BE_UPDATED_EN,
+  phoneMarathi: TO_BE_UPDATED_MR,
+  email: TO_BE_UPDATED_EN,
+  emailMarathi: TO_BE_UPDATED_MR,
   address: 'Ovali, Bhiwandi, Thane, Maharashtra – 421302',
-  hours: 'To be updated',
+  addressMarathi: 'ओवळी, भिवंडी, ठाणे, महाराष्ट्र – 421302',
+  hours: TO_BE_UPDATED_EN,
+  hoursMarathi: TO_BE_UPDATED_MR,
+  sarpanch: TO_BE_UPDATED_EN,
+  sarpanchMarathi: TO_BE_UPDATED_MR,
+  deputySarpanch: TO_BE_UPDATED_EN,
+  deputySarpanchMarathi: TO_BE_UPDATED_MR,
+  gramSevak: TO_BE_UPDATED_EN,
+  gramSevakMarathi: TO_BE_UPDATED_MR,
 };
 
 export const navItems = [
   { to: '/', en: 'Home', mr: 'मुख्यपृष्ठ' },
   { to: '/about', en: 'About Us', mr: 'आमच्याबद्दल' },
-  { to: '/gallery', en: 'Gallery', mr: 'दालन' },
+  { to: '/gallery', en: 'Gallery', mr: 'फोटो गॅलरी' },
   { to: '/announcements', en: 'Announcements', mr: 'सूचना' },
+  { to: '/documents', en: 'Documents', mr: 'कागदपत्रे' },
   { to: '/contact', en: 'Contact', mr: 'संपर्क' },
   { to: '/feedback', en: 'Feedback', mr: 'अभिप्राय' },
 ] as const;
@@ -24,24 +38,61 @@ export const portals = [
   { name: 'Thane District', short: 'Thane District', url: 'https://thane.nic.in/' },
 ];
 
-export type Announcement = { id: number; date: string; category: 'General' | 'Gram Sabha' | 'Development' | 'Public Notice'; title: string; english: string; description: string };
-// No Ovali notices have been provided or verified yet.
+export type Announcement = {
+  id: string | number;
+  date: string;
+  category: 'General' | 'Gram Sabha' | 'Development' | 'Public Notice';
+  title: string;
+  titleMarathi?: string;
+  english: string;
+  description: string;
+  descriptionMarathi?: string;
+  isPinned?: boolean;
+};
+
+// No official notices provided yet; populated via Supabase or kept empty
 export const announcements: Announcement[] = [];
 
-export const gallery = [
-  { id: 1, title: 'Ovali Village', mr: 'ओवळी गाव', category: 'Village', description: 'Village photographs will be added when authentic Ovali images are available.' },
-  { id: 2, title: 'Ovali Gram Panchayat', mr: 'ग्रामपंचायत ओवळी', category: 'Panchayat', description: 'Authentic Panchayat photographs will be added when available.' },
-  { id: 3, title: 'Village Development', mr: 'गावाचा विकास', category: 'Development', description: 'Verified development activity photographs will be added when available.' },
-  { id: 4, title: 'Community Activities', mr: 'सामुदायिक उपक्रम', category: 'Community', description: 'Community photographs will be added when authentic Ovali images are available.' },
-];
+export type GalleryItem = {
+  id: string | number;
+  title: string;
+  mr: string;
+  category: 'Village' | 'Panchayat' | 'Development' | 'Community';
+  description?: string;
+  image?: string;
+};
+
+// Official photos will be added when available or uploaded via Supabase
+export const gallery: GalleryItem[] = [];
+
+export type OfficialDocumentItem = {
+  id: string | number;
+  title: string;
+  titleMarathi: string;
+  category: 'Gram Sabha' | 'Budget & Finance' | 'Citizen Services' | 'Forms' | 'Tenders' | 'Government Schemes';
+  documentNumber?: string;
+  issueDate: string;
+  fileUrl: string;
+  fileSizeBytes?: number;
+  fileExtension?: string;
+};
+
+// Official documents populated via Supabase or kept empty
+export const documents: OfficialDocumentItem[] = [];
 
 export const villageFacts = {
+  village: 'Ovali',
+  taluka: 'Bhiwandi',
+  district: 'Thane',
+  state: 'Maharashtra',
+  pin: '421302',
   code: '552662',
-  area: '202 hectares (2.02 km²)',
+  area: '202 hectares / 2.02 km²',
   nearestTown: 'Bhiwandi Nizampur, approximately 5 km',
   districtDistance: 'Thane, approximately 18 km',
-  panchayatSamiti: 'Bhiwandi Panchayat Samiti',
-  districtPanchayat: 'Thane Zila Parishad',
+  panchayatSamiti: 'Bhiwandi',
+  districtPanchayat: 'Thane Zilla Parishad',
+  censusLabel: 'Census 2011',
   census: {
     population: '1,566',
     males: '847',
@@ -55,7 +106,20 @@ export const villageFacts = {
   },
 };
 
-export const nearbyVillages = ['Pimpalgaon', 'Ranjnoli', 'Pimpalghar', 'Gove', 'Pimpalas', 'Pimpalner', 'Val', 'Kailasnagar', 'Gundavali', 'Dapode', 'Mankoli', 'Vehele'];
+export const nearbyVillages = [
+  'Pimpalgaon',
+  'Ranjnoli',
+  'Pimpalghar',
+  'Gove',
+  'Pimpalas',
+  'Pimpalner',
+  'Val',
+  'Kailasnagar',
+  'Gundavali',
+  'Dapode',
+  'Mankoli',
+  'Vehele',
+];
 
 export const villageFacilities = [
   { name: 'Bank', status: 'Available within village' },
