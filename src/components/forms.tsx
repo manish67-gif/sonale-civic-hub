@@ -767,7 +767,6 @@ export function FeedbackForm() {
 
       <Button type="submit" size="lg" disabled={status === 'loading'}>
         <Send className="mr-2 size-4" />
-npx tsc --noEmit
         {status === 'loading'
           ? 'Submitting…'
           : 'Submit Feedback / अभिप्राय नोंदवा'}
