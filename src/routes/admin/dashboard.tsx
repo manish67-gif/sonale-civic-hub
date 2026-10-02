@@ -562,12 +562,21 @@ function PanchayatSettingsTab({
     if (isSupabaseConfigured && supabase) {
       const { error } = await supabase
         .from('panchayat_settings')
-        .upsert({
-          ...form,
-          id: 1,
+        .update({
+          office_phone: form.office_phone,
+          office_email: form.office_email,
+          office_address: form.office_address,
+          office_hours_en: form.office_hours_en,
+          office_hours_mr: form.office_hours_mr,
+          sarpanch_name_en: form.sarpanch_name_en,
+          sarpanch_name_mr: form.sarpanch_name_mr,
+          deputy_sarpanch_name_en: form.deputy_sarpanch_name_en,
+          deputy_sarpanch_name_mr: form.deputy_sarpanch_name_mr,
+          gram_sevak_name_en: form.gram_sevak_name_en,
+          gram_sevak_name_mr: form.gram_sevak_name_mr,
           updated_at: new Date().toISOString(),
-        });
-
+        })
+        .eq('id', 1);
       if (error) {
         showNotice(`Error saving: ${error.message}`);
         setSaving(false);
@@ -576,6 +585,10 @@ function PanchayatSettingsTab({
     }
 
     setSettings(form);
+
+    // Tell the public Header/Footer that Panchayat information changed
+    window.dispatchEvent(new Event('panchayat-settings-updated'));
+
     setSaving(false);
     showNotice('Panchayat official information updated successfully.');
   };
